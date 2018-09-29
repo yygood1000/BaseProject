@@ -1,0 +1,42 @@
+ext {
+    android = [
+            compileSdkVersion: 27,
+            buildToolsVersion: "27.0.3",
+            minSdkVersion    : 21,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0.0",
+    ]
+
+    def lib_version = "27.0.1"
+    dependencies = [
+            // Android support
+            appcompat_v7           : "com.android.support:appcompat-v7:${lib_version}",
+            design                 : "com.android.support:design:${lib_version}",
+
+            //Glide
+//            glide                  : "com.github.bumptech.glide:glide:3.7.0",
+
+            // ButterKnife
+            butterknife            : "com.jakewharton:butterknife:8.8.1",
+            butterknife_compiler   : "com.jakewharton:butterknife-compiler:8.8.1",
+
+            // RxJava
+            rxjava                 : "io.reactivex.rxjava2:rxjava:2.1.1",
+            rxandroid              : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            rxbinding              : "com.jakewharton.rxbinding2:rxbinding:2.0.0",
+            rx_lifecycle           : "com.trello.rxlifecycle2:rxlifecycle:2.1.0",
+            rx_lifecycle_components: "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0",
+            //permissions
+//            rx_premission          : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar",
+
+            // Retrofit
+            retrofit               : "com.squareup.retrofit2:retrofit:2.3.0",
+            converter_gson         : "com.squareup.retrofit2:converter-gson:2.3.0",
+            adapter_rxjava2        : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+            logging_interceptor    : "com.squareup.okhttp3:logging-interceptor:3.8.1",
+
+//            brvah                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.26",
+    ]
+}
+

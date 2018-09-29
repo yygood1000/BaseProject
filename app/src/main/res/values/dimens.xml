@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- activity切场动画时长 -->
+    <integer name="activity_animation_time">500</integer>
+    <dimen name="spacing_64">64dp</dimen>
+
+</resources>

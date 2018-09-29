@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+def config = rootProject.ext.android // 配置
+def dep = rootProject.ext.dependencies // 依赖
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        applicationId "com.yangy.baseproject"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false // 开启混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation dep.appcompat_v7
+    implementation dep.design
+
+
+    implementation dep.rxjava
+    implementation dep.rxandroid
+    implementation dep.rxbinding
+    implementation dep.rx_lifecycle
+    implementation dep.rx_lifecycle_components
+
+    implementation dep.retrofit
+    implementation dep.converter_gson
+    implementation dep.adapter_rxjava2
+    implementation dep.logging_interceptor
+
+    implementation dep.butterknife
+    annotationProcessor dep.butterknife_compiler
+
+}
