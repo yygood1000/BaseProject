@@ -27,10 +27,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api dep.appcompat_v7
+    api dep.design
+    api dep.rxjava
+    api dep.rxandroid
+    api dep.rxbinding
+    api dep.rx_lifecycle
+    api dep.rx_lifecycle_components
+    api dep.retrofit
+    api dep.converter_gson
+    api dep.adapter_rxjava2
+    api dep.logging_interceptor
+    api dep.butterknife
+    annotationProcessor dep.butterknife_compiler
 
     implementation dep.appcompat_v7
 }
