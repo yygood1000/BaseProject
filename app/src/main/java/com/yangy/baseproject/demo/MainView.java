@@ -4,5 +4,5 @@ import com.mvp.base.view.IView;
 
 
 public interface MainView extends IView {
-    void testToast();
+    void changeTextContext();
 }

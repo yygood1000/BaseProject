@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 def config = rootProject.ext.android // 配置
 def dep = rootProject.ext.dependencies // 依赖
 
