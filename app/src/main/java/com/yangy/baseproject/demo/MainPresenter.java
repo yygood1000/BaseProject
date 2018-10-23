@@ -2,12 +2,12 @@ package com.yangy.baseproject.demo;
 
 import android.content.Context;
 
-import com.yangy.baseproject.base.presenter.BasePresenter;
+import com.mvp.base.presenter.BasePresenter;
 
 public class MainPresenter extends BasePresenter<MainView> {
 
-    public MainPresenter(MainView mView, Context mContext) {
-        super(mView, mContext);
+    MainPresenter(MainView mView) {
+        super(mView);
     }
 
     public void requestTest() {

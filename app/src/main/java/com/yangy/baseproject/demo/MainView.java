@@ -1,6 +1,6 @@
 package com.yangy.baseproject.demo;
 
-import com.yangy.baseproject.base.view.IView;
+import com.mvp.base.view.IView;
 
 
 public interface MainView extends IView {

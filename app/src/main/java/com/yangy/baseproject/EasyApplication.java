@@ -2,7 +2,8 @@ package com.yangy.baseproject;
 
 import android.app.Application;
 
-import com.yangy.baseproject.utils.Utils;
+import utils.Utils;
+
 
 /**
  * Created by yangy
