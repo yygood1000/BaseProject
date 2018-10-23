@@ -1,4 +1,4 @@
-package com.yangy.baseproject.base;
+package com.mvp.base;
 
 import java.io.Serializable;
 

@@ -1,8 +1,9 @@
-package com.yangy.baseproject.base.view;
+package com.mvp.base.view;
 
+import android.content.Context;
 import android.os.Bundle;
 
-import com.yangy.baseproject.base.BaseExtra;
+import com.mvp.base.BaseExtra;
 
 
 /**
@@ -10,6 +11,8 @@ import com.yangy.baseproject.base.BaseExtra;
  * Created by yy on 2017/6/28.
  */
 public interface IView {
+    Context getContext();
+
     /**
      * 该方法在MvpActivity中已经实现好了，P层只需要mView.showToast(string),即可展示Toast
      */
@@ -48,15 +51,16 @@ public interface IView {
     /**
      * 关闭页面
      */
-    void finishPage();
+    void finish();
 
-//    /**
-//     * 展示/收起加载框
-//     */
-//    void showLoadingDialog();
-//
-//    /**
-//     * 关闭弹窗
-//     */
-//    void cancelShowLoadingDialog();
+    /**
+     * 展示/收起加载框
+     */
+    void showLoadingDialog();
+
+    /**
+     * 关闭弹窗
+     */
+    void cancelShowLoadingDialog();
+
 }

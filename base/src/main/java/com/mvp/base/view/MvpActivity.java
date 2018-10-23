@@ -1,19 +1,19 @@
-package com.yangy.baseproject.base.view;
+package com.mvp.base.view;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.mvp.base.BaseExtra;
+import com.mvp.base.R;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-import com.yangy.baseproject.R;
-import com.yangy.baseproject.base.BaseExtra;
-import com.yangy.baseproject.base.presenter.BasePresenter;
-import com.yangy.baseproject.utils.MemoryUtils;
-import com.yangy.baseproject.utils.SystemUtils;
-import com.yangy.baseproject.utils.Toaster;
+import com.mvp.base.presenter.BasePresenter;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import utils.MemoryUtils;
+import utils.SystemUtils;
+import utils.Toaster;
 
 /**
  * 如果需要启用MVP模式开发，Activity相关的就继承该基类
@@ -44,7 +44,6 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
 
         initTitle();
         initPresenter();
-        mPresenter.onCreate();// 这里这么写是因为，如果有需要在onCreate生命周期中执行的业务，可写在对应的Presenter中
         initView();
         initData();
         setActivityAnimation(0);
@@ -87,46 +86,18 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     protected void initTitle() {
     }
 
-    /* ==========================================生命周期相关 ========================================= */
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mPresenter.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mPresenter.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mPresenter.onStop();
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-        // 目前BasePresenter.onDestroy() 写解绑方法
-        mPresenter.onDestroy();
+        mPresenter.onDetach();
+
         // 当分配内存剩余小于40%时，进行手动GC
         if (MemoryUtils.getMemoryPercent() < 0.4) {
             System.gc();
             System.runFinalization();
         }
     }
-
-    /* ==========================================生命周期相关 end========================================== */
 
     /**
      * toast默认的展示方法，如果有特殊要求，在子类中重写该方法
@@ -136,6 +107,23 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
         Toaster.showShort(msg);
     }
 
+
+    /**
+     * TODO 展示加载框
+     */
+    public void showLoadingDialog() {
+    }
+
+    /**
+     * TODO 关闭加载框
+     */
+    public void cancelShowLoadingDialog() {
+    }
+
+    @Override
+    public Context getContext() {
+        return mContext;
+    }
     /*
      * ============================页面跳转相关方法============================
      */
@@ -269,14 +257,6 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
             return intent.getExtras() != null ? (E) intent.getExtras().getSerializable(extraName) : null;
         }
         return null;
-    }
-
-    /**
-     * Presenter中调用关闭页面的方法
-     */
-    @Override
-    public void finishPage() {
-        finish();
     }
 
     @Override
