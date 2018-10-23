@@ -37,8 +37,8 @@ dependencies {
     api dep.converter_gson
     api dep.adapter_rxjava2
     api dep.logging_interceptor
+
     api dep.butterknife
-    annotationProcessor dep.butterknife_compiler
 
     implementation dep.appcompat_v7
 }

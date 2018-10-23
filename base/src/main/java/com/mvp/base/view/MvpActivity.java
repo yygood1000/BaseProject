@@ -89,8 +89,8 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
-        mPresenter.onDetach();
+        if (unbinder != null) unbinder.unbind();
+        if (mPresenter != null) mPresenter.onDetach();
 
         // 当分配内存剩余小于40%时，进行手动GC
         if (MemoryUtils.getMemoryPercent() < 0.4) {
