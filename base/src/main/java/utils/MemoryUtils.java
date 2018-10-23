@@ -1,4 +1,4 @@
-package com.yangy.baseproject.utils;
+package utils;
 
 /**
  * Created by yy on 2017/9/16.

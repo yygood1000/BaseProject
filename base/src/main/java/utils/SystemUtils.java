@@ -1,11 +1,10 @@
-package com.yangy.baseproject.utils;
+package utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.support.annotation.AnimRes;
 import android.telephony.TelephonyManager;
 
 
@@ -49,14 +48,14 @@ public class SystemUtils {
         System.exit(0);
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint({"MissingPermission", "HardwareIds"})
     public static String getIMSI() {
         TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getApplicationContext()
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.getSubscriberId();
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint({"MissingPermission", "HardwareIds"})
     public static String getDeviceID(Context context) {
         final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 

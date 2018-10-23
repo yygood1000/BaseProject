@@ -1,4 +1,4 @@
-package com.yangy.baseproject.utils;
+package utils;
 
 import android.text.TextUtils;
 
