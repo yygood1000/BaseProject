@@ -22,27 +22,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    implementation dep.appcompat_v7
-    implementation dep.design
-
-
-    implementation dep.rxjava
-    implementation dep.rxandroid
-    implementation dep.rxbinding
-    implementation dep.rx_lifecycle
-    implementation dep.rx_lifecycle_components
-
-    implementation dep.retrofit
-    implementation dep.converter_gson
-    implementation dep.adapter_rxjava2
-    implementation dep.logging_interceptor
-
-    implementation dep.butterknife
-    annotationProcessor dep.butterknife_compiler
-
+    implementation project(':base')
 }
