@@ -25,14 +25,6 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // App 被系统回收，App跳转到启动页重新开启
-//        if (savedInstanceState != null) {
-//            finish();
-//            AppManager.getInstance().finishAllActivity();
-//            turnToActivityWithBundle(RespectiveData.getSplashActivityClassClass());
-//            return;
-//        }
-
         setContentView(getLayoutResId());
 
         unbinder = ButterKnife.bind(this);
