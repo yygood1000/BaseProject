@@ -1,18 +1,15 @@
 package com.mvp.base.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.mvp.base.BaseExtra;
 import com.mvp.base.R;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.mvp.base.presenter.BasePresenter;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import utils.MemoryUtils;
-import utils.SystemUtils;
 import utils.Toaster;
 
 /**
@@ -32,7 +29,7 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
 //        if (savedInstanceState != null) {
 //            finish();
 //            AppManager.getInstance().finishAllActivity();
-//            turnToActivity(RespectiveData.getSplashActivityClassClass());
+//            turnToActivityWithBundle(RespectiveData.getSplashActivityClassClass());
 //            return;
 //        }
 
@@ -124,140 +121,10 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     public Context getContext() {
         return mContext;
     }
+
     /*
      * ============================页面跳转相关方法============================
      */
-
-    /**
-     * 跳转至下个页面
-     */
-    @Override
-    public void turnToActivity(Class className) {
-        Intent intent = new Intent(this, className);
-        startActivity(intent);
-    }
-
-    /**
-     * 跳转至下个页面并传参
-     */
-    @Override
-    public void turnToActivity(Class className, Bundle bundle) {
-        Intent intent = new Intent(this, className);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivity(intent);
-    }
-
-    /**
-     * 跳转至下个页面并传参
-     *
-     * @param extra 传递的实体类
-     */
-    public <E extends BaseExtra> void turnToActivity(Class className, E extra) {
-        Bundle bundle = new Bundle();
-        if (E.getExtraName() == null) {
-            E.setExtraName(SystemUtils.nextExtraName());
-        }
-        bundle.putSerializable(E.getExtraName(), extra);
-        turnToActivity(className, bundle);
-    }
-
-    /**
-     * 跳转至下个页面并销毁
-     */
-    @Override
-    public void turnToActivityWithFinish(Class className) {
-        turnToActivity(className);
-        this.finish();
-    }
-
-    /**
-     * 跳转至下个页面，并传参，并销毁
-     */
-    @Override
-    public void turnToActivityWithFinish(Class className, Bundle bundle) {
-        turnToActivity(className, bundle);
-        this.finish();
-    }
-
-    /**
-     * 跳转至下个页面ForResult
-     */
-    public void turnToActivityForResult(Class className, int requestCode) {
-        Intent intent = new Intent(this, className);
-        startActivityForResult(intent, requestCode);
-    }
-
-    /**
-     * 跳转至下个页面并传参ForResult
-     */
-    public void turnToActivityForResult(Class className, int requestCode, Bundle bundle) {
-        Intent intent = new Intent(this, className);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivityForResult(intent, requestCode);
-    }
-
-    /**
-     * 跳转至下个页面并传参ForResult
-     *
-     * @param extra 需要传递的实体类
-     */
-    public <E extends BaseExtra> void turnToActivityForResult(Class className, int requestCode, E extra) {
-        Bundle bundle = new Bundle();
-        if (E.getExtraName() == null) {
-            E.setExtraName(SystemUtils.nextExtraName());
-        }
-        bundle.putSerializable(E.getExtraName(), extra);
-        turnToActivityForResult(className, requestCode, bundle);
-    }
-
-    /**
-     * 设置返回数据 ，并销毁
-     */
-    public <E extends BaseExtra> void setResultAndFinish(int resultCode, E extra) {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        if (E.getExtraName() == null) {
-            E.setExtraName(SystemUtils.nextExtraName());
-        }
-        bundle.putSerializable(E.getExtraName(), extra);
-        intent.putExtras(bundle);
-        setResult(resultCode, intent);
-        this.finish();
-    }
-
-    /**
-     * 设置返回数据 ，并销毁
-     */
-    public void setResultAndFinish(int resultCode) {
-        setResult(resultCode);
-        this.finish();
-    }
-
-    /**
-     * 通过extraName获取传参
-     *
-     * @param extraName getExtraName()方法获取
-     */
-    public <E extends BaseExtra> E getIntentExtra(String extraName) {
-        return getIntentExtra(getIntent(), extraName);
-    }
-
-    /**
-     * 在OnActivityResult()中获取Extra的方法
-     *
-     * @param intent    OnActivityResult方法中返回的Intent
-     * @param extraName 通过Extra.getExtraName()获取
-     */
-    public <E extends BaseExtra> E getIntentExtra(Intent intent, String extraName) {
-        if (intent != null) {
-            return intent.getExtras() != null ? (E) intent.getExtras().getSerializable(extraName) : null;
-        }
-        return null;
-    }
 
     @Override
     public void finish() {

@@ -1,16 +1,16 @@
 package com.yangy.baseproject.demo;
 
-import android.os.Bundle;
-import android.util.Log;
+import android.content.Intent;
 import android.widget.TextView;
 
 import com.mvp.base.view.MvpActivity;
 import com.yangy.baseproject.R;
 import com.yangy.baseproject.demo.bean.extra.SecondActivityExtra;
+import com.yangy.baseproject.demo.bean.extra.SimpleExtra;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
+import utils.ActivityUtils;
 import utils.Logger;
 
 public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
@@ -33,13 +33,23 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
     @OnClick(R.id.tv_test)
     public void onViewClicked() {
-        Logger.d("oye","click");
+        Logger.d("oye", "click");
         mPresenter.click();
-        turnToActivity(SecondActivity.class, new SecondActivityExtra());
+        ActivityUtils.turnToActivityResult(this, SecondActivity.class, 1,
+                new SecondActivityExtra("TAG_YY", new SimpleExtra(1000)));
+
     }
 
     @Override
     public void changeTextContext() {
         mTvTest.setText("修改了文本");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            mTvTest.setText("返回该页面了");
+        }
     }
 }

@@ -1,13 +1,11 @@
 package com.yangy.baseproject.demo;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.mvp.base.view.MvpActivity;
 import com.yangy.baseproject.R;
 import com.yangy.baseproject.demo.bean.extra.SecondActivityExtra;
 
-import utils.Toaster;
+import butterknife.OnClick;
+import utils.ActivityUtils;
 
 public class SecondActivity extends MvpActivity {
 
@@ -22,7 +20,13 @@ public class SecondActivity extends MvpActivity {
 
     @Override
     protected void initView() {
-        SecondActivityExtra contactExtra = (SecondActivityExtra) getIntentExtra(SecondActivityExtra.getExtraName());
-        showToast(contactExtra.TAG);
+        SecondActivityExtra extra = ActivityUtils.getParcelable(getIntent());
+        showToast(extra.getTAG() + "flag == " + extra.getSimpleExtra().getSimpleInt());
+    }
+
+
+    @OnClick(R.id.tv_back)
+    public void onViewClicked() {
+        ActivityUtils.setResultAndFinish(this, RESULT_OK);
     }
 }

@@ -11,8 +11,6 @@ import android.telephony.TelephonyManager;
 import java.util.List;
 import java.util.UUID;
 
-//import com.umeng.analytics.MobclickAgent;
-
 public class SystemUtils {
     /**
      * killing app from process level
@@ -22,7 +20,7 @@ public class SystemUtils {
      * 这样系统就不会重新启动入口activity
      * 不会出现多次报错的问题
      */
-    public static void killProcess(Context context) {
+    public static void killProcess() {
         finishAllActivities();
 
         android.os.Process.killProcess(android.os.Process.myPid());
@@ -41,11 +39,6 @@ public class SystemUtils {
             activity.finish();
         }
         activityList.clear();
-    }
-
-    public static void killProcess() {
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(0);
     }
 
     @SuppressLint({"MissingPermission", "HardwareIds"})

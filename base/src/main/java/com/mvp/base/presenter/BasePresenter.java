@@ -1,13 +1,9 @@
 package com.mvp.base.presenter;
 
-import android.content.Context;
-import android.content.Intent;
-
 import com.mvp.base.view.IView;
-import com.mvp.base.view.MvpActivity;
 
 public class BasePresenter<V extends IView> implements IPresenter {
-    public V mView;
+    protected V mView;
 
     public BasePresenter(V view) {
         this.mView = view;
