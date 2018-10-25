@@ -1,5 +1,7 @@
 package com.mvp.base.view;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -21,6 +23,7 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     public Context mContext;
     public T mPresenter;
     private Unbinder unbinder;
+    private Dialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,15 +101,26 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
 
 
     /**
-     * TODO 展示加载框
+     * 展示加载框
      */
-    public void showLoadingDialog() {
+    public void showLoading() {
+        if (loadingDialog == null) {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("加载中...");
+            progressDialog.setIndeterminate(false);
+            loadingDialog = progressDialog;
+        }
+        if (!loadingDialog.isShowing()) {
+            loadingDialog.show();
+        }
     }
 
     /**
-     * TODO 关闭加载框
+     * 关闭加载框
      */
-    public void cancelShowLoadingDialog() {
+    public void dismissLoading() {
+        if (loadingDialog != null && loadingDialog.isShowing())
+            loadingDialog.dismiss();
     }
 
     @Override

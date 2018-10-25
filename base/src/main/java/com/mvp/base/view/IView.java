@@ -23,11 +23,11 @@ public interface IView {
     /**
      * 展示/收起加载框
      */
-    void showLoadingDialog();
+    void showLoading();
 
     /**
      * 关闭弹窗
      */
-    void cancelShowLoadingDialog();
+    void dismissLoading();
 
 }
