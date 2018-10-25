@@ -8,11 +8,11 @@ ext {
             versionName      : "1.0.0",
     ]
 
-    def lib_version = "27.0.1"
+    def dependVersion = "27.0.1"
     dependencies = [
             // Android support
-            appcompat_v7           : "com.android.support:appcompat-v7:${lib_version}",
-            design                 : "com.android.support:design:${lib_version}",
+            appcompat_v7           : "com.android.support:appcompat-v7:${dependVersion}",
+            design                 : "com.android.support:design:${dependVersion}",
 
             //Glide
 //            glide                  : "com.github.bumptech.glide:glide:3.7.0",

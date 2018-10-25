@@ -1,16 +1,13 @@
 apply plugin: 'com.android.library'
-def config = rootProject.ext.android // 配置
-def dep = rootProject.ext.dependencies // 依赖
 
 android {
-    compileSdkVersion config.compileSdkVersion
-
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,19 +28,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     // support:appcompat-v7
-    api dep.appcompat_v7
-    api dep.design
-    api dep.rxjava
-    api dep.rxandroid
-    api dep.rxbinding
-    api dep.rx_lifecycle
-    api dep.rx_lifecycle_components
-    api dep.retrofit
-    api dep.converter_gson
-    api dep.adapter_rxjava2
-    api dep.logging_interceptor
+    api rootProject.ext.dependencies.appcompat_v7
+    api rootProject.ext.dependencies.design
+    api rootProject.ext.dependencies.rxjava
+    api rootProject.ext.dependencies.rxandroid
+    api rootProject.ext.dependencies.rxbinding
+    api rootProject.ext.dependencies.rx_lifecycle
+    api rootProject.ext.dependencies.rx_lifecycle_components
+    api rootProject.ext.dependencies.retrofit
+    api rootProject.ext.dependencies.converter_gson
+    api rootProject.ext.dependencies.adapter_rxjava2
+    api rootProject.ext.dependencies.logging_interceptor
 
-    api dep.butterknife
-
-    implementation dep.appcompat_v7
+    api rootProject.ext.dependencies.butterknife
 }

@@ -1,16 +1,15 @@
 apply plugin: 'com.android.application'
-
-def config = rootProject.ext.android // 配置
 def dep = rootProject.ext.dependencies // 依赖
 
 android {
-    compileSdkVersion config.compileSdkVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
         applicationId "com.yangy.baseproject"
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
-        versionCode config.versionCode
-        versionName config.versionName
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,7 +24,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // 这里需要单独添加注解依赖，否则点击事件无效
-    annotationProcessor dep.butterknife_compiler
+    annotationProcessor rootProject.ext.dependencies.butterknife_compiler
 
     implementation project(':base')
 }
