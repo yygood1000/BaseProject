@@ -1,8 +1,7 @@
-package com.yangy.baseproject.demo;
+package com.yangy.baseproject;
 
 import com.mvp.base.view.MvpActivity;
-import com.yangy.baseproject.R;
-import com.yangy.baseproject.demo.bean.extra.SecondActivityExtra;
+import com.yangy.baseproject.bean.extra.SecondActivityExtra;
 
 import butterknife.OnClick;
 import utils.ActivityUtils;

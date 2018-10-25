@@ -1,12 +1,11 @@
-package com.yangy.baseproject.demo;
+package com.yangy.baseproject;
 
 import android.content.Intent;
 import android.widget.TextView;
 
 import com.mvp.base.view.MvpActivity;
-import com.yangy.baseproject.R;
-import com.yangy.baseproject.demo.bean.extra.SecondActivityExtra;
-import com.yangy.baseproject.demo.bean.extra.SimpleExtra;
+import com.yangy.baseproject.bean.extra.SecondActivityExtra;
+import com.yangy.baseproject.bean.extra.SimpleExtra;
 
 import butterknife.BindView;
 import butterknife.OnClick;

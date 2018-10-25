@@ -1,6 +1,4 @@
-package com.yangy.baseproject.demo;
-
-import android.content.Context;
+package com.yangy.baseproject;
 
 import com.mvp.base.presenter.BasePresenter;
 

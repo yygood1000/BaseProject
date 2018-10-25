@@ -1,4 +1,4 @@
-package com.yangy.baseproject.demo.bean.extra;
+package com.yangy.baseproject.bean.extra;
 
 import android.os.Parcel;
 import android.os.Parcelable;
