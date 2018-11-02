@@ -20,36 +20,10 @@ import utils.Toaster;
  */
 public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatActivity implements IView {
     public String TAG;
-    public Context mContext;
     public T mPresenter;
+    public Context mContext;
     private Unbinder unbinder;
     private Dialog loadingDialog;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
-
-        unbinder = ButterKnife.bind(this);
-        mContext = this;
-        TAG = this.getClass().toString();
-
-        initTitle();
-        initPresenter();
-        initView();
-        initData();
-        setActivityAnimation(0);
-    }
-
-    /**
-     * 需要子类来实现，获取子类的IPresenter，一个activity有可能有多个IPresenter
-     */
-    protected BasePresenter getPresenter() {
-        if (mPresenter == null) {
-            throw new NullPointerException("Presenter 未被初始化，请先在initPresenter中初始化Presenter");
-        }
-        return mPresenter;
-    }
 
     /**
      * 初始化presenters,由子类实现
@@ -76,6 +50,22 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
      * 初始化标题栏
      */
     protected void initTitle() {
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getLayoutResId());
+
+        unbinder = ButterKnife.bind(this);
+        mContext = this;
+        TAG = this.getClass().toString();
+
+        initTitle();
+        initPresenter();
+        initView();
+        initData();
+        setActivityAnimation(0);
     }
 
     @Override
@@ -126,6 +116,16 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     @Override
     public Context getContext() {
         return mContext;
+    }
+
+    /**
+     * 需要子类来实现，获取子类的IPresenter，一个activity有可能有多个IPresenter
+     */
+    protected BasePresenter getPresenter() {
+        if (mPresenter == null) {
+            throw new NullPointerException("Presenter 未被初始化，请先在initPresenter中初始化Presenter");
+        }
+        return mPresenter;
     }
 
     /*

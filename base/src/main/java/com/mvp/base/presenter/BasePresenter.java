@@ -15,9 +15,11 @@ public class BasePresenter<V extends IView> implements IPresenter {
     }
 
     /**
-     * 为防止内存泄漏,需在页面销毁的时候清除对context,activity实例的引用,并且解除view的绑定
+     * 为防止内存泄漏,需在页面销毁的时候解除view的绑定
      */
     private void clearMemory() {
         this.mView = null;
     }
+
+    // TODO 统一处理网络请求的生命周期管理
 }
