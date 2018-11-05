@@ -1,12 +1,13 @@
-package com.yangy.baseproject;
+package com.yangy.baseproject.presenter;
 
 import com.mvp.base.presenter.BasePresenter;
+import com.yangy.baseproject.view.MainView;
 
 import utils.Logger;
 
 public class MainPresenter extends BasePresenter<MainView> {
 
-    MainPresenter(MainView mView) {
+    public MainPresenter(MainView mView) {
         super(mView);
     }
 

@@ -1,9 +1,11 @@
-package com.yangy.baseproject;
+package com.yangy.baseproject.view;
 
 import android.content.Intent;
 import android.widget.TextView;
 
 import com.mvp.base.view.MvpActivity;
+import com.yangy.baseproject.presenter.MainPresenter;
+import com.yangy.baseproject.R;
 import com.yangy.baseproject.bean.extra.SecondActivityExtra;
 import com.yangy.baseproject.bean.extra.SimpleExtra;
 

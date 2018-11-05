@@ -1,6 +1,9 @@
-package com.yangy.baseproject;
+package com.yangy.baseproject.view;
+
+import android.app.ProgressDialog;
 
 import com.mvp.base.view.MvpActivity;
+import com.yangy.baseproject.R;
 import com.yangy.baseproject.bean.extra.SecondActivityExtra;
 
 import butterknife.OnClick;
@@ -10,6 +13,7 @@ public class SecondActivity extends MvpActivity {
 
     @Override
     protected void initPresenter() {
+        ProgressDialog progressDialog = new ProgressDialog(this);
     }
 
     @Override
