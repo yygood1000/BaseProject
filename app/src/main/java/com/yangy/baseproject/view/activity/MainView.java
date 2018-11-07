@@ -1,4 +1,4 @@
-package com.yangy.baseproject.view;
+package com.yangy.baseproject.view.activity;
 
 import com.mvp.base.view.IView;
 

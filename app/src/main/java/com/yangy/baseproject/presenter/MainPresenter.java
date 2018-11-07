@@ -1,7 +1,7 @@
 package com.yangy.baseproject.presenter;
 
 import com.mvp.base.presenter.BasePresenter;
-import com.yangy.baseproject.view.MainView;
+import com.yangy.baseproject.view.activity.MainView;
 
 import utils.Logger;
 

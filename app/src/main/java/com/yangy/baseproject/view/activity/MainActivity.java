@@ -1,22 +1,22 @@
-package com.yangy.baseproject.view;
+package com.yangy.baseproject.view.activity;
 
 import android.content.Intent;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 import com.mvp.base.view.MvpActivity;
-import com.yangy.baseproject.presenter.MainPresenter;
 import com.yangy.baseproject.R;
 import com.yangy.baseproject.bean.extra.SecondActivityExtra;
 import com.yangy.baseproject.bean.extra.SimpleExtra;
+import com.yangy.baseproject.presenter.MainPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import utils.ActivityUtils;
-import utils.Logger;
 
 public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
-    @BindView(R.id.tv_test)
-    TextView mTvTest;
+    @BindView(R.id.btn_jump)
+    Button mBtnJump;
 
     @Override
     protected void initPresenter() {
@@ -32,25 +32,30 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     protected void initView() {
     }
 
-    @OnClick(R.id.tv_test)
-    public void onViewClicked() {
-        Logger.d("oye", "click");
-        mPresenter.click();
-        ActivityUtils.turnToActivityResult(this, SecondActivity.class, 1,
-                new SecondActivityExtra("TAG_YY", new SimpleExtra(1000)));
-
-    }
-
     @Override
     public void changeTextContext() {
-        mTvTest.setText("修改了文本");
+        mBtnJump.setText("修改了文本");
+    }
+
+
+    @OnClick({R.id.btn_jump, R.id.btn_frag_act})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_jump:
+                mPresenter.click();
+                ActivityUtils.turnToActivityResult(this, SecondActivity.class, 1,
+                        new SecondActivityExtra("TAG_YY", new SimpleExtra(1000)));
+                break;
+            case R.id.btn_frag_act:
+                break;
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            mTvTest.setText("返回该页面了");
+            mBtnJump.setText("返回该页面了");
         }
     }
 }

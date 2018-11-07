@@ -27,11 +27,11 @@ public abstract class MvpFragment<T extends IFragmentPresenter> extends RxFragme
     public MvpActivity mActivity;
     private Unbinder unbinder;
 
-    //初始化presenter
-    protected abstract void initPresenter();
-
     //获取LayoutId
     protected abstract int getLayoutResId();
+
+    //初始化presenter
+    protected abstract void initPresenter();
 
     protected abstract void initView(View v);
 
@@ -82,14 +82,14 @@ public abstract class MvpFragment<T extends IFragmentPresenter> extends RxFragme
     /**
      * 展示/收起加载框Dialog
      */
-    public void showLoadingDialog() {
+    public void showLoading() {
         mActivity.showLoading();
     }
 
     /**
      * 关闭加载框
      */
-    public void cancelShowLoadingDialog() {
+    public void dismissLoading() {
         mActivity.dismissLoading();
     }
 
