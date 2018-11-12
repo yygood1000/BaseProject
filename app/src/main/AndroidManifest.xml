@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.SecondActivity" />
+        <activity android:name=".view.activity.PageActivity" />
     </application>
 
 </manifest>

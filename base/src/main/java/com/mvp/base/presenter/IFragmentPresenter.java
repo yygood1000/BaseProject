@@ -4,7 +4,7 @@ package com.mvp.base.presenter;
  * Created by yy on 2017/3/13.
  * <p>
  * Fragment 的 Presenter 接口，继承自IPresenter
- * 该接口补全Fragment所特有的生命周期方法
+ * 该接口补全Fragment所特有的生命周期方法，如有需要个自行打开注释，在MvpFragment中实现
  */
 
 public interface IFragmentPresenter extends IPresenter {

@@ -6,10 +6,8 @@ import com.mvp.base.presenter.IFragmentPresenter;
 
 
 /**
- * Created by zengfen on 2017/7/28.
- * Description:配合viewPager使用，监听fragment可见状态懒加载
+ * 配合viewPager使用，监听fragment可见状态懒加载
  */
-
 public abstract class BasePagerFragment<T extends IFragmentPresenter> extends MvpFragment<T> {
     private boolean isFirstResume = true;
     private boolean isFirstVisible = true;
@@ -28,7 +26,6 @@ public abstract class BasePagerFragment<T extends IFragmentPresenter> extends Mv
         super.onActivityCreated(savedInstanceState);
         initPrepare();
     }
-
 
     @Override
     public void onResume() {
@@ -57,7 +54,7 @@ public abstract class BasePagerFragment<T extends IFragmentPresenter> extends Mv
 
     /**
      * 页面对用户可见且不是首次
-     * */
+     */
     protected abstract void onUserVisible();
 
     /**

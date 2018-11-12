@@ -18,13 +18,13 @@ import java.util.ArrayList;
  */
 public abstract class BaseFragmentActivity<T extends BasePresenter> extends MvpActivity<T> {
     protected FragmentManager mFragmentManager = getSupportFragmentManager();
-    protected ArrayList<Fragment> mFragments = getFragments();
+    protected ArrayList<MvpFragment> mFragments = getFragments();
     protected Fragment mCurrFragment;
 
     /**
      * @return 返回所有需要显示的Fragment集合
      */
-    protected abstract ArrayList<Fragment> getFragments();
+    protected abstract ArrayList<MvpFragment> getFragments();
 
     /**
      * @return 返回显示Fragment的布局

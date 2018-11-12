@@ -38,7 +38,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     }
 
 
-    @OnClick({R.id.btn_jump, R.id.btn_frag_act})
+    @OnClick({R.id.btn_jump, R.id.btn_fragment_activity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_jump:
@@ -46,7 +46,8 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                 ActivityUtils.turnToActivityResult(this, SecondActivity.class, 1,
                         new SecondActivityExtra("TAG_YY", new SimpleExtra(1000)));
                 break;
-            case R.id.btn_frag_act:
+            case R.id.btn_fragment_activity:
+                ActivityUtils.turnToActivity(this, PageActivity.class);
                 break;
         }
     }

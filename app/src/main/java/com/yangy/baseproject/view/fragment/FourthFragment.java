@@ -5,10 +5,10 @@ import android.view.View;
 import com.mvp.base.view.MvpFragment;
 import com.yangy.baseproject.R;
 
-public class HomeFragment extends MvpFragment {
+public class FourthFragment extends MvpFragment {
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_fourth;
     }
 
     @Override

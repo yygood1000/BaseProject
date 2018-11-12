@@ -3,13 +3,13 @@ package com.mvp.base.view;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mvp.base.presenter.IFragmentPresenter;
-import com.trello.rxlifecycle2.components.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -17,7 +17,6 @@ import utils.Toaster;
 
 /**
  * Created by yy on 2017.8.1
- * <p>
  * Fragment MVP模式基类
  */
 
@@ -45,7 +44,7 @@ public abstract class MvpFragment<T extends IFragmentPresenter> extends RxFragme
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
             savedInstanceState) {
         View view = inflater.inflate(getLayoutResId(), container, false);
         unbinder = ButterKnife.bind(this, view);

@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--<style name="MerriweatherTextStyle" parent="Layout_Wrap_Wrap">-->
+        <!--<item name="android:fontFamily">@font/font_merriweather</item>-->
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">0.05</item>-->
+    <!--</style>-->
+
+    <!--<style name="ChineseTextStyle" parent="Layout_Wrap_Wrap">-->
+        <!--<item name="android:fontFamily">@font/font_chinese</item>-->
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">0.05</item>-->
+    <!--</style>-->
+</resources>
