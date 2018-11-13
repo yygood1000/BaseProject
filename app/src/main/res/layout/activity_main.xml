@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:background="#FFcccc"
         android:orientation="vertical"
-        tools:context="com.yangy.baseproject.view.activity.MainActivity">
+        tools:context="com.yangy.baseproject.ui.activity.MainActivity">
 
         <Button
             android:id="@+id/btn_jump"

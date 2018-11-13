@@ -1,4 +1,4 @@
-package com.yangy.baseproject.view.fragment;
+package com.yangy.baseproject.ui.fragment;
 
 import android.view.View;
 
