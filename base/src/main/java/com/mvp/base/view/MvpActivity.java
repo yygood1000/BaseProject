@@ -65,7 +65,7 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
         initPresenter();
         initView();
         initData();
-        setActivityAnimation(0);
+//        setActivityAnimation(0);
     }
 
     @Override
@@ -135,7 +135,7 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     @Override
     public void finish() {
         super.finish();
-        setActivityAnimation(1);
+//        setActivityAnimation(1);
     }
 
     public void setNoAnim() {

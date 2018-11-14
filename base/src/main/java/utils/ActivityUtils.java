@@ -29,7 +29,6 @@ public class ActivityUtils {
         Intent intent = new Intent(activity, className);
         putParcelable(intent, parcelable);
         activity.startActivity(intent);
-        activity = null;
     }
 
     /**

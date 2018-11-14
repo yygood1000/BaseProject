@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--colorPrimaryDark对应状态栏的颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--colorPrimary 对应ToolBar的颜色-->
@@ -10,15 +10,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <!--Base application theme.-->
-    <style name="AppTheme.Base" parent="AppTheme">
-        <!--将ActionBar隐藏,这里使用ToolBar-->
-        <!--<item name="windowActionBar">false</item>-->
-        <!--<item name="windowNoTitle">true</item>-->
-        <!--窗口背景色 -->
-        <!--<item name="android:windowBackground">@color/app_windows_bg</item>-->
+    <style name="AppTheme.NoActionBar.Fullscreen">
         <!--全屏显示，状态栏会不显示-->
-        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <!--Toaster 背景Style-->
@@ -58,7 +58,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
     </style>
-
 
 
 </resources>

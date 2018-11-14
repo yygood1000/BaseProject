@@ -47,7 +47,8 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                         new SecondActivityExtra("TAG_YY", new SimpleExtra(1000)));
                 break;
             case R.id.btn_fragment_activity:
-                ActivityUtils.turnToActivity(this, PageActivity.class);
+                startActivity(new Intent(this, PageActivity.class));
+//                ActivityUtils.turnToActivity(this, PageActivity.class);
                 break;
         }
     }
