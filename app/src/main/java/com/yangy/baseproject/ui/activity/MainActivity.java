@@ -37,7 +37,6 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         mBtnJump.setText("修改了文本");
     }
 
-
     @OnClick({R.id.btn_jump, R.id.btn_fragment_activity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -47,8 +46,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                         new SecondActivityExtra("TAG_YY", new SimpleExtra(1000)));
                 break;
             case R.id.btn_fragment_activity:
-                startActivity(new Intent(this, PageActivity.class));
-//                ActivityUtils.turnToActivity(this, PageActivity.class);
+                ActivityUtils.turnToActivity(this, PageActivity.class);
                 break;
         }
     }

@@ -3,7 +3,7 @@
     <color name="colorPrimary">#ffd200</color>
     <!--<color name="colorPrimaryDark">#F4CA00</color>-->
     <color name="colorPrimaryDark">#F9CD00</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FFE879</color>
     <color name="white">#FFFFFF</color>
     <!--页面公用背景色-->
     <color name="app_windows_bg">#F6F6F6</color>
