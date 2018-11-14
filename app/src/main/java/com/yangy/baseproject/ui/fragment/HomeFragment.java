@@ -6,11 +6,8 @@ import com.mvp.base.view.MvpFragment;
 import com.yangy.baseproject.R;
 
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class HomeFragment extends MvpFragment {
-    Unbinder unbinder;
-
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home;
