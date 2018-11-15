@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/click"
         style="@style/Layout_Wrap_Wrap"
         android:layout_centerInParent="true"
         android:text="SecondFragment" />

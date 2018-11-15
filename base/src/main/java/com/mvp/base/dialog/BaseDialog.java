@@ -2,6 +2,7 @@ package com.mvp.base.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -22,6 +23,8 @@ public class BaseDialog extends Dialog {
     }
 
     private void initView(Context context) {
+        // 使自定义Dialog背景透明
+        this.getWindow().setBackgroundDrawable(new ColorDrawable());
     }
 
 

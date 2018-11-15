@@ -87,7 +87,7 @@ public class BottomBarTab extends FrameLayout {
         int min = dip2px(context, 20);
         int padding = dip2px(context, 5);
         mTvUnreadCount = new TextView(context);
-        mTvUnreadCount.setBackgroundResource(R.drawable.bg_msg_bubble);
+        mTvUnreadCount.setBackgroundResource(R.drawable.shape_bg_msg_bubble);
         mTvUnreadCount.setMinWidth(min);
         mTvUnreadCount.setTextColor(Color.WHITE);
         mTvUnreadCount.setPadding(padding, 0, padding, 0);

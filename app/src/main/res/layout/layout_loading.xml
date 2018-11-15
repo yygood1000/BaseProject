@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout_Wrap_Wrap"
+    android:background="@drawable/shape_corner5_white_tran80"
+    android:padding="20dp">
+
+    <ProgressBar
+        style="@style/ProgressBar_Loading"
+        android:layout_centerVertical="true"
+        android:indeterminateDuration="1000" />
+</RelativeLayout>
