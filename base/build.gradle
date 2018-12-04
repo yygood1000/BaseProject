@@ -40,5 +40,7 @@ dependencies {
     api rootProject.ext.dependencies.adapter_rxjava2
     api rootProject.ext.dependencies.logging_interceptor
 
+    api rootProject.ext.dependencies.gson
+
     api rootProject.ext.dependencies.butterknife
 }

@@ -35,6 +35,7 @@ ext {
             converter_gson         : "com.squareup.retrofit2:converter-gson:2.3.0",
             adapter_rxjava2        : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
             logging_interceptor    : "com.squareup.okhttp3:logging-interceptor:3.8.1",
+            gson                   : "com.google.code.gson:gson:2.8.5",
 
 //            brvah                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.26",
     ]
