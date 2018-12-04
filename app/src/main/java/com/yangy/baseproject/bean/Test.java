@@ -2,7 +2,7 @@ package com.yangy.baseproject.bean;
 
 import java.util.List;
 
-public class test {
+public class Test {
     public String story_id;
     public ColorsBean colors;
     public String author;

@@ -10,7 +10,7 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.Test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -23,12 +23,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+
     // 这里需要单独添加注解依赖，否则点击事件无效
     annotationProcessor rootProject.ext.dependencies.butterknife_compiler
 
     implementation project(':base')
-
-//    // 友盟统计
-//    implementation 'com.umeng.umsdk:analytics:7.5.4'
-//    implementation 'com.umeng.umsdk:common:1.5.4'
 }
