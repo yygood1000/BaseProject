@@ -53,6 +53,7 @@ public class BottomBarTab extends FrameLayout {
         setBackgroundDrawable(drawable);
         typedArray.recycle();
 
+        // 单个Item的父容器
         LinearLayout lLContainer = new LinearLayout(context);
         lLContainer.setOrientation(LinearLayout.VERTICAL);
         lLContainer.setGravity(Gravity.CENTER);
@@ -61,8 +62,11 @@ public class BottomBarTab extends FrameLayout {
         paramsContainer.gravity = Gravity.CENTER;
         lLContainer.setLayoutParams(paramsContainer);
 
+        // Item的图片
         mIvTab = new ImageView(context);
-        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 27, getResources().getDisplayMetrics());
+        // 指定图片尺寸
+//        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 27, getResources()
+// .getDisplayMetrics());
 //        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -71,6 +75,7 @@ public class BottomBarTab extends FrameLayout {
         mIvTab.setColorFilter(ContextCompat.getColor(context, R.color.tab_unselect));
         lLContainer.addView(mIvTab);
 
+        // Item的文本
         mTvTab = new TextView(context);
         mTvTab.setText(title);
         LinearLayout.LayoutParams paramsTv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -84,6 +89,7 @@ public class BottomBarTab extends FrameLayout {
 
         addView(lLContainer);
 
+        // 右上角的数字角标
         int min = dip2px(context, 20);
         int padding = dip2px(context, 5);
         mTvUnreadCount = new TextView(context);
@@ -102,6 +108,9 @@ public class BottomBarTab extends FrameLayout {
         addView(mTvUnreadCount);
     }
 
+    /**
+     * 覆写setSelected(),添加选中效果逻辑
+     */
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
@@ -114,6 +123,9 @@ public class BottomBarTab extends FrameLayout {
         }
     }
 
+    /**
+     * 设置当前Item的下标
+     */
     public void setTabPosition(int position) {
         mTabPosition = position;
         if (position == 0) {

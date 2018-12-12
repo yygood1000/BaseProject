@@ -49,12 +49,21 @@ public class BottomBar extends LinearLayout {
         init(context, attrs);
     }
 
+    public interface OnTabSelectedListener {
+        void onTabSelected(int position, int prePosition);
+
+        void onTabUnselected(int position);
+
+        void onTabReselected(int position);
+    }
+
     private void init(Context context, AttributeSet attrs) {
         setOrientation(VERTICAL);
 
 //        ImageView shadowView = new ImageView(context);
 //        shadowView.setBackgroundResource(R.drawable.actionbar_shadow_up);
-//        addView(shadowView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//        addView(shadowView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams
+// .WRAP_CONTENT));
 
         mTabLayout = new LinearLayout(context);
         mTabLayout.setBackgroundColor(Color.WHITE);
@@ -63,64 +72,6 @@ public class BottomBar extends LinearLayout {
 
         mTabParams = new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         mTabParams.weight = 1;
-    }
-
-    public BottomBar addItem(final BottomBarTab tab) {
-        tab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener == null) return;
-
-                int pos = tab.getTabPosition();
-                if (mCurrentPosition == pos) {
-                    mListener.onTabReselected(pos);
-                } else {
-                    mListener.onTabSelected(pos, mCurrentPosition);
-                    tab.setSelected(true);
-                    mListener.onTabUnselected(mCurrentPosition);
-                    mTabs.get(mCurrentPosition).setSelected(false);
-                    mCurrentPosition = pos;
-                }
-            }
-        });
-        tab.setTabPosition(mTabLayout.getChildCount());
-        tab.setLayoutParams(mTabParams);
-        mTabLayout.addView(tab);
-        mTabs.add(tab);
-        return this;
-    }
-
-    public void setOnTabSelectedListener(OnTabSelectedListener onTabSelectedListener) {
-        mListener = onTabSelectedListener;
-    }
-
-    public void setCurrentItem(final int position) {
-        mTabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mTabLayout.getChildAt(position).performClick();
-            }
-        });
-    }
-
-    public int getCurrentItemPosition() {
-        return mCurrentPosition;
-    }
-
-    /**
-     * 获取 Tab
-     */
-    public BottomBarTab getItem(int index) {
-        if (mTabs.size() < index) return null;
-        return mTabs.get(index);
-    }
-
-    public interface OnTabSelectedListener {
-        void onTabSelected(int position, int prePosition);
-
-        void onTabUnselected(int position);
-
-        void onTabReselected(int position);
     }
 
     @Override
@@ -172,6 +123,60 @@ public class BottomBar extends LinearLayout {
     }
 
 
+    /*
+     * **************** 对外提供的主要API Start****************
+     * 添加Item
+     */
+    public BottomBar addItem(final BottomBarTab tab) {
+        tab.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener == null) return;
+
+                int pos = tab.getTabPosition();
+                if (mCurrentPosition == pos) {
+                    mListener.onTabReselected(pos);
+                } else {
+                    mListener.onTabSelected(pos, mCurrentPosition);
+                    tab.setSelected(true);
+                    mListener.onTabUnselected(mCurrentPosition);
+                    mTabs.get(mCurrentPosition).setSelected(false);
+                    mCurrentPosition = pos;
+                }
+            }
+        });
+        tab.setTabPosition(mTabLayout.getChildCount());
+        tab.setLayoutParams(mTabParams);
+        mTabLayout.addView(tab);
+        mTabs.add(tab);
+        return this;
+    }
+
+    public void setOnTabSelectedListener(OnTabSelectedListener onTabSelectedListener) {
+        mListener = onTabSelectedListener;
+    }
+
+    public void setCurrentItem(final int position) {
+        mTabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mTabLayout.getChildAt(position).performClick();
+            }
+        });
+    }
+
+    public int getCurrentItemPosition() {
+        return mCurrentPosition;
+    }
+
+    /**
+     * 获取 Tab
+     */
+    public BottomBarTab getItem(int index) {
+        if (mTabs.size() < index) return null;
+        return mTabs.get(index);
+    }
+
     public void hide() {
         hide(true);
     }
@@ -192,6 +197,13 @@ public class BottomBar extends LinearLayout {
         return mVisible;
     }
 
+    /**
+     * 隐藏或显示底部导航栏
+     *
+     * @param visible 是否可见
+     * @param animate 是否播放动画
+     * @param force   是否强制
+     */
     private void toggle(final boolean visible, final boolean animate, boolean force) {
         if (mVisible != visible || force) {
             mVisible = visible;
@@ -224,4 +236,7 @@ public class BottomBar extends LinearLayout {
             }
         }
     }
+    /*
+     * **************** 对外提供的主要API End****************
+     */
 }
