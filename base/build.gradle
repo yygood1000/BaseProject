@@ -31,6 +31,7 @@ dependencies {
     api rootProject.ext.dependencies.rxbinding
     api rootProject.ext.dependencies.rx_lifecycle
     api rootProject.ext.dependencies.rx_lifecycle_components
+    api rootProject.ext.dependencies.rx_premission
     api rootProject.ext.dependencies.retrofit
     api rootProject.ext.dependencies.converter_gson
     api rootProject.ext.dependencies.adapter_rxjava2

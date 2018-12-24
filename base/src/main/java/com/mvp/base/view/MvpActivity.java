@@ -26,6 +26,12 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     private Dialog loadingDialog;
 
     /**
+     * 初始化标题栏
+     */
+    protected void initTitle() {
+    }
+
+    /**
      * 初始化presenters,由子类实现
      */
     protected abstract void initPresenter();
@@ -46,11 +52,6 @@ public abstract class MvpActivity<T extends BasePresenter> extends RxAppCompatAc
     protected void initData() {
     }
 
-    /**
-     * 初始化标题栏
-     */
-    protected void initTitle() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

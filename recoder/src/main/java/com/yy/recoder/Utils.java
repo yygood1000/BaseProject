@@ -28,6 +28,9 @@ public class Utils {
         this.context = context;
     }
 
+    /**
+     * 获取屏幕像素宽度
+     */
     public int getWidthPixels() {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         Configuration cf = context.getResources().getConfiguration();
@@ -40,6 +43,9 @@ public class Utils {
         return 0;
     }
 
+    /**
+     * 获取屏幕像素高度
+     */
     public int getHeightPixels() {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         Configuration cf = context.getResources().getConfiguration();
@@ -51,15 +57,4 @@ public class Utils {
         }
         return 0;
     }
-
-    public int dp2px(float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    public int px2dp(float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
-
 }

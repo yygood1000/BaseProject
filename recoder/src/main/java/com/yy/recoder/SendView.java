@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
 
+import utils.SizeUtils;
+
 /**
  * Created by wanbo on 2017/1/20.
  */
@@ -31,7 +33,7 @@ public class SendView extends RelativeLayout {
     }
 
     private void init(Context context){
-        RelativeLayout.LayoutParams params = new LayoutParams(Utils.getInstance(context).getWidthPixels(),Utils.getInstance(context).dp2px(180f));
+        RelativeLayout.LayoutParams params = new LayoutParams(Utils.getInstance(context).getWidthPixels(), SizeUtils.dp2px(180f));
         setLayoutParams(params);
         RelativeLayout layout = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.widget_view_send_btn,null,false);
         layout.setLayoutParams(params);

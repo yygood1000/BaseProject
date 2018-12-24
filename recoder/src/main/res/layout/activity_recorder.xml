@@ -5,7 +5,7 @@
 
     <!--图像渲染控件-->
     <SurfaceView
-        android:id="@+id/main_surface_view"
+        android:id="@+id/surface_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
