@@ -25,8 +25,10 @@ import java.util.List;
 
 public class MediaUtils implements SurfaceHolder.Callback {
     private static final String TAG = "MediaUtils";
+
     public static final int MEDIA_AUDIO = 0;
     public static final int MEDIA_VIDEO = 1;
+
     private Activity activity;
     private MediaRecorder mMediaRecorder;
     private CamcorderProfile profile;

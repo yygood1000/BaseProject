@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_recoder)
     public void onViewClicked() {
-        // TODO 权限校验
         checkPermission();
     }
 
