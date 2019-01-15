@@ -28,11 +28,15 @@ public class RecorderActivity extends MvpActivity {
 
     @Override
     protected void initView() {
-        // setting
+        // 初始化MediaUtils
         mediaUtils = new MediaUtils(this);
+        // 工具类模式，录像模式
         mediaUtils.setRecorderType(MediaUtils.MEDIA_VIDEO);
+        // 设置录像保存位置
         mediaUtils.setTargetDir(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES));
+        // 设置录像文件名
         mediaUtils.setTargetName(UUID.randomUUID() + ".mp4");
+        // 设置SurfaceView,及画面预览控件
         mediaUtils.setSurfaceView(mSurfaceView);
     }
 

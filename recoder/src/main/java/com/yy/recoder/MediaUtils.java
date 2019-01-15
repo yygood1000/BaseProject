@@ -146,9 +146,9 @@ public class MediaUtils implements SurfaceHolder.Callback {
                 mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
                 mMediaRecorder.setProfile(profile);
                 // 实际视屏录制后的方向
-                if(cameraPosition == 0){
+                if (cameraPosition == 0) {
                     mMediaRecorder.setOrientationHint(270);
-                }else {
+                } else {
                     mMediaRecorder.setOrientationHint(or);
                 }
 
@@ -217,11 +217,48 @@ public class MediaUtils implements SurfaceHolder.Callback {
         }
     }
 
+    private void releaseMediaRecorder() {
+        if (mMediaRecorder != null) {
+            // clear recorder configuration
+            mMediaRecorder.reset();
+            // release the recorder object
+            mMediaRecorder.release();
+            mMediaRecorder = null;
+            // Lock camera for later use i.e taking it back from MediaRecorder.
+            // MediaRecorder doesn't need it anymore and we will release it if the activity pauses.
+            Log.d("Recorder", "release Recorder");
+        }
+    }
+
+    private void releaseCamera() {
+        if (mCamera != null) {
+            // release the camera for other applications
+            mCamera.release();
+            mCamera = null;
+            Log.d("Recorder", "release Camera");
+        }
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        mSurfaceHolder = holder;
+        startPreView(holder);
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    }
+
+    /**
+     * SurfaceView#surfaceCreated()中调用，开始预览
+     */
     private void startPreView(SurfaceHolder holder) {
+        // 开启相机
         if (mCamera == null) {
             mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
         }
         if (mCamera != null) {
+            // 设置相机旋转角，系统相机默认为横屏
             mCamera.setDisplayOrientation(or);
             try {
                 mCamera.setPreviewDisplay(holder);
@@ -259,39 +296,6 @@ public class MediaUtils implements SurfaceHolder.Callback {
         }
     }
 
-    private void releaseMediaRecorder() {
-        if (mMediaRecorder != null) {
-            // clear recorder configuration
-            mMediaRecorder.reset();
-            // release the recorder object
-            mMediaRecorder.release();
-            mMediaRecorder = null;
-            // Lock camera for later use i.e taking it back from MediaRecorder.
-            // MediaRecorder doesn't need it anymore and we will release it if the activity pauses.
-            Log.d("Recorder", "release Recorder");
-        }
-    }
-
-    private void releaseCamera() {
-        if (mCamera != null) {
-            // release the camera for other applications
-            mCamera.release();
-            mCamera = null;
-            Log.d("Recorder", "release Camera");
-        }
-    }
-
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        mSurfaceHolder = holder;
-        startPreView(holder);
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-    }
-
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         if (mCamera != null) {
@@ -316,6 +320,9 @@ public class MediaUtils implements SurfaceHolder.Callback {
         }
     }
 
+    /**
+     * 缩放手势监听
+     */
     private class ZoomGestureListener extends GestureDetector.SimpleOnGestureListener {
         //双击手势事件
         @Override
@@ -381,7 +388,8 @@ public class MediaUtils implements SurfaceHolder.Callback {
             Camera.getCameraInfo(i, cameraInfo);//得到每一个摄像头的信息
             if (cameraPosition == 1) {
                 //现在是后置，变更为前置
-                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {//代表摄像头的方位，CAMERA_FACING_FRONT前置      CAMERA_FACING_BACK后置
+                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {//代表摄像头的方位，CAMERA_FACING_FRONT前置
+                    //  CAMERA_FACING_BACK后置
                     mCamera.stopPreview();//停掉原来摄像头的预览
                     mCamera.release();//释放资源
                     mCamera = null;//取消原来摄像头
@@ -392,7 +400,8 @@ public class MediaUtils implements SurfaceHolder.Callback {
                 }
             } else {
                 //现在是前置， 变更为后置
-                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {//代表摄像头的方位，CAMERA_FACING_FRONT前置      CAMERA_FACING_BACK后置
+                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {//代表摄像头的方位，CAMERA_FACING_FRONT前置
+                    // CAMERA_FACING_BACK后置
                     mCamera.stopPreview();//停掉原来摄像头的预览
                     mCamera.release();//释放资源
                     mCamera = null;//取消原来摄像头

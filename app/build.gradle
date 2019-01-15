@@ -32,4 +32,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies.butterknife_compiler
 
     implementation project(':base')
+    // 万能适配器
+//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+
 }
