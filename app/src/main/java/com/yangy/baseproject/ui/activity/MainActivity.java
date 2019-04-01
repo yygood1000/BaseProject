@@ -1,6 +1,10 @@
 package com.yangy.baseproject.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,10 +17,44 @@ import com.yangy.baseproject.presenter.MainPresenter;
 import butterknife.BindView;
 import butterknife.OnClick;
 import utils.ActivityUtils;
+import utils.Logger;
 
 public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
     @BindView(R.id.btn_jump)
     Button mBtnJump;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        handleDeepLink(getIntent());
+        // ATTENTION: This was auto-generated to handle app links.
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleDeepLink(intent);
+    }
+
+    private void handleDeepLink(Intent intent) {
+        String appLinkAction = intent.getAction();
+        //接受数据
+        if (null != intent.getData()) {
+            Uri uri = intent.getData();
+            Log.d("qw", uri.toString());
+            String pageTarget = uri.getQueryParameter("page");
+            String pageText = uri.getQueryParameter("text");
+            if (TextUtils.isEmpty(pageTarget))
+                pageTarget = "";
+            if (TextUtils.isEmpty(pageText))
+                pageText = "";
+
+            if (pageTarget.equals("2")) {
+                ActivityUtils.turnToActivity(this, PageActivity.class);
+            }
+        }
+    }
 
     @Override
     protected void initPresenter() {

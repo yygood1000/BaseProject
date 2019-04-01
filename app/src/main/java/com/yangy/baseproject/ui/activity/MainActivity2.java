@@ -1,9 +1,14 @@
 package com.yangy.baseproject.ui.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.mvp.base.view.MvpActivity;
 import com.yangy.baseproject.R;
@@ -12,6 +17,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import utils.Logger;
 
 /**
  * 嵌套滑动
