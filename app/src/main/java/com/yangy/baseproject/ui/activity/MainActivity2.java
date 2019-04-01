@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 嵌套滑动
+ */
 public class MainActivity2 extends MvpActivity {
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
@@ -36,7 +39,7 @@ public class MainActivity2 extends MvpActivity {
 
     private ArrayList<String> getData() {
         ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 0; i++) {
             list.add("第" + i + "项");
         }
         return list;
