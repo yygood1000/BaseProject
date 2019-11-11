@@ -3,7 +3,6 @@ def dep = rootProject.ext.dependencies // 依赖
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
         applicationId "com.yangy.baseproject"
         minSdkVersion rootProject.ext.android.minSdkVersion
