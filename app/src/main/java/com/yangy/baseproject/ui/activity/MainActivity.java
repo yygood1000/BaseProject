@@ -37,7 +37,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         mBtnJump.setText("修改了文本");
     }
 
-    @OnClick({R.id.btn_jump, R.id.btn_fragment_activity})
+    @OnClick({R.id.btn_jump, R.id.btn_fragment_activity,R.id.btn_matrix_activity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_jump:
@@ -47,6 +47,9 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                 break;
             case R.id.btn_fragment_activity:
                 ActivityUtils.turnToActivity(this, PageActivity.class);
+                break;
+            case R.id.btn_matrix_activity:
+                ActivityUtils.turnToActivity(this, MatrixImageActivity.class);
                 break;
         }
     }

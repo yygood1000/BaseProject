@@ -27,10 +27,9 @@ import com.yangy.baseproject.R;
 public class BottomBarTab extends FrameLayout {
     private ImageView mIvTab;
     private TextView mTvTab;
+    private TextView mTvUnreadCount;
     private Context mContext;
     private int mTabPosition = -1;
-
-    private TextView mTvUnreadCount;
 
     public BottomBarTab(Context context, @DrawableRes int icon, CharSequence title) {
         this(context, null, icon, title);

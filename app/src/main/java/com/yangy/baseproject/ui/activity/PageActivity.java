@@ -1,5 +1,7 @@
 package com.yangy.baseproject.ui.activity;
 
+import android.app.Activity;
+
 import com.mvp.base.presenter.BasePresenter;
 import com.mvp.base.view.BaseFragmentActivity;
 import com.mvp.base.view.MvpFragment;
@@ -14,6 +16,7 @@ import com.yangy.baseproject.ui.view.BottomBarTab;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import utils.ActivityUtils;
 
 public class PageActivity extends BaseFragmentActivity<BasePresenter> {
     public static final int FIRST_PAGE = 0;
@@ -77,4 +80,5 @@ public class PageActivity extends BaseFragmentActivity<BasePresenter> {
         });
         mBottomBar.setCurrentItem(FIRST_PAGE);
     }
+
 }
