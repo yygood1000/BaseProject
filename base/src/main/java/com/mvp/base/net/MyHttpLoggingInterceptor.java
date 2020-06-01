@@ -1,4 +1,4 @@
-/*
+package com.mvp.base.net;/*
  * Copyright (C) 2015 Square, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yangy.baseproject.net;
 
 import android.text.TextUtils;
 
 import java.io.EOFException;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Connection;
@@ -47,7 +47,7 @@ import static okhttp3.internal.platform.Platform.INFO;
  * a stable logging format, use your own interceptor.
  */
 public final class MyHttpLoggingInterceptor implements Interceptor {
-    private static final Charset UTF8 = Charset.forName("UTF-8");
+    private static final Charset UTF8 = StandardCharsets.UTF_8;
 
     public enum Level {
         /**

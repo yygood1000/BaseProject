@@ -1,4 +1,4 @@
-package com.yangy.baseproject.net;
+package com.mvp.base.net;
 
 public class NetworkManager {
     private NetworkManager() {

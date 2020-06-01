@@ -1,8 +1,8 @@
-package com.yangy.baseproject.net;
+package com.mvp.base.net;
 
 import android.text.TextUtils;
 
-import com.yangy.baseproject.BuildConfig;
+import com.mvp.base.BuildConfig;
 
 import io.reactivex.observers.DefaultObserver;
 import utils.Logger;

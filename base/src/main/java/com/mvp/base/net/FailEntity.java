@@ -1,4 +1,4 @@
-package com.yangy.baseproject.net;
+package com.mvp.base.net;
 
 /**
  * created by bravin on 2018/6/13.
