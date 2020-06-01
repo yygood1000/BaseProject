@@ -13,11 +13,11 @@ import com.yangy.baseproject.R;
 import com.yangy.baseproject.bean.extra.SecondActivityExtra;
 import com.yangy.baseproject.bean.extra.SimpleExtra;
 import com.yangy.baseproject.presenter.MainPresenter;
+import com.yangy.baseproject.ui.iview.MainView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import utils.ActivityUtils;
-import utils.Logger;
 
 public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
     @BindView(R.id.btn_jump)

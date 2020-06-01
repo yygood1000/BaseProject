@@ -20,9 +20,9 @@ import butterknife.ButterKnife;
 import utils.Logger;
 
 /**
- * 嵌套滑动
+ * 嵌套滑动 示例
  */
-public class MainActivity2 extends MvpActivity {
+public class CollapsingDemoActivity extends MvpActivity {
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @BindView(R.id.recyclerView)
