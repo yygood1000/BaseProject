@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.activity.MatrixImageActivity"></activity>
+        <activity android:name=".ui.activity.MatrixImageActivity"/>
         <activity
             android:name=".ui.activity.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -21,7 +21,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- 设置scheme 可以从网页跳转到这个页面 推送页通过这个页面处理-->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!--跳转链接 driverapp://openpage/ChangeOrder?actionAndroid=com.topjet.crediblenumber.ui.activity.V3_AutoSearchGoodsActivity&action_type=1&param1=diver&param2=22&param3=11 -->
+                <!--[scheme]://[host]/[path]?[query]-->
+                <data
+                    android:host="www.yy.com"
+                    android:scheme="http"
+                    android:path="/data" />
+            </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.activity.MainActivity2"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.activity.SecondActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
