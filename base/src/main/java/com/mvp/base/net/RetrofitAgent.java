@@ -1,6 +1,7 @@
 package com.mvp.base.net;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
