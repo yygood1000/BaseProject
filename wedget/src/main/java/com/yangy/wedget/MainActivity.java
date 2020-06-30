@@ -2,11 +2,9 @@ package com.yangy.wedget;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -14,7 +12,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.mvp.base.view.MvpActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import utils.Logger;
@@ -25,11 +22,12 @@ public class MainActivity extends MvpActivity {
 //    @BindView(R.id.viewPager)
 //    ViewPager mViewPager;
     private String mTitles[] = {
-            "上海", "头条推荐", "生活", "娱乐八卦", "体育",
-            "段子", "美食", "电影", "科技", "搞笑",
-            "社会", "财经", "时尚", "汽车", "军事",
-            "小说", "育儿", "职场", "萌宠", "游戏",
-            "健康", "动漫", "互联网"};
+            "上海", "头条推荐", "生活", "娱乐八卦"};
+//    , "体育",
+//            "段子", "美食", "电影", "科技", "搞笑",
+//            "社会", "财经", "时尚", "汽车", "军事",
+//            "小说", "育儿", "职场", "萌宠", "游戏",
+//            "健康", "动漫", "互联网"};
 
     private List<Fragment> mFragments;
     private TabFragmentAdapter mTabFragmentAdapter;
@@ -59,7 +57,6 @@ public class MainActivity extends MvpActivity {
         for (int i = 0; i < mTitles.length; i++) {
             mTabLayout.addTab(mTitles[i]);
         }
-        mTabLayout.setupWithViewPager(mViewPager);
         for (int i = 0; i < mTitles.length; i++) {
             MyFragment fragment = new MyFragment();
             Bundle bundle = new Bundle();
@@ -70,13 +67,10 @@ public class MainActivity extends MvpActivity {
 
         TabFragmentAdapter adapter = new TabFragmentAdapter(mFragments, mTitles, getSupportFragmentManager(), this);
         mViewPager.setAdapter(adapter);
+        // 一下两句代码实现ViewPager与TabLayout联动
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout.getTabLayout()));
         mTabLayout.setupWithViewPager(mViewPager);
 
-        setListener();
-    }
-
-    public void setListener() {
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -103,5 +97,7 @@ public class MainActivity extends MvpActivity {
                 Logger.i("======我再次被选中====");
             }
         });
+
+        mTabLayout.setUnReadVisibility(0, true);
     }
 }

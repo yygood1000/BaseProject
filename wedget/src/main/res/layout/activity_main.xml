@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1E1E"
     tools:context=".MainActivity">
 
     <com.yangy.wedget.CustomTabLayout
         android:id="@+id/tablayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#1e1e1e"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/colorPrimary"
         app:tabIndicatorHeight="4dp"
+        app:tabIndicatorMarginTop="5dp"
         app:tabIndicatorWidth="15dp"
         app:tabSelectTextColor="#FFFFFF"
+        app:tabSelectedBold="true"
         app:tabTextColor="#FFFFFF"
-        app:tabTextSize="6dp"
+        app:tabTextSizeDP="14"
+        app:tabUnReadDrawable="@drawable/shape_round_unread"
+        app:tabUnReadDrawablePadding="5dp"
         app:tab_Mode="mode_scrollable" />
 
     <androidx.viewpager.widget.ViewPager

@@ -2,14 +2,21 @@
 <resources>
     <declare-styleable name="CustomTabLayout">
         <attr name="tab_Mode" format="enum">
-            <enum name="mode_fixed" value="1"/>
-            <enum name="mode_scrollable" value="2"/>
+            <enum name="mode_fixed" value="1" />
+            <enum name="mode_scrollable" value="2" />
         </attr>
-        <attr name="tabIndicatorColor" format="color"/>
-        <attr name="tabSelectTextColor" format="color"/>
-        <attr name="tabTextColor" format="color"/>
-        <attr name="tabIndicatorHeight" format="dimension"/>
-        <attr name="tabIndicatorWidth" format="dimension"/>
-        <attr name="tabTextSize" format="dimension"/>
+        <attr name="tabSelectTextColor" format="color" />
+        <attr name="tabTextColor" format="color" />
+        <attr name="tabIndicatorHeight" format="dimension" />
+        <attr name="tabIndicatorWidth" format="dimension" />
+        <attr name="tabIndicatorMarginTop" format="dimension" />
+        <attr name="tabTextSizeDP" format="integer" />
+        <attr name="tabSelectedBold" format="boolean" />
+        <!--Tab附加信息（个数）-->
+        <attr name="tabIsShowBadge" format="boolean" />
+        <attr name="tabBadgeTextSize" format="integer" />
+        <!--未读标记属性需要tabIsShowUnRead 与 tabUnReadDrawable 配套使用-->
+        <attr name="tabUnReadDrawable" format="reference" />
+        <attr name="tabUnReadDrawablePadding" format="dimension" />
     </declare-styleable>
 </resources>

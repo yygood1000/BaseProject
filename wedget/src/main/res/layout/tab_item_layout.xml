@@ -13,13 +13,19 @@
         android:layout_height="wrap_content"
         tools:text="Tab1"
         tools:textColor="#333333"
-        tools:textSize="13sp" />
+        tools:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tab_item_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff" />
 
     <View
         android:id="@+id/tab_item_indicator"
         android:layout_width="10dp"
         android:layout_height="2dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/shape_indecator"
+        android:background="@drawable/shape_indecator_white"
         android:visibility="invisible" />
 </LinearLayout>
