@@ -86,6 +86,17 @@
         app:tabTextSizeDP="14"
         app:tab_Mode="mode_fixed" />
 
+    <com.yangy.wedget.BannerIndicator
+        android:id="@+id/indicator"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:sleider_align="Right"
+        app:slider_height="10dp"
+        app:slider_width="50dp" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

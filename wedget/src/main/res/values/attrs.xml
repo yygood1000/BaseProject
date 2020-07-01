@@ -21,4 +21,20 @@
         <attr name="tabUnReadDrawable" format="reference" />
         <attr name="tabUnReadDrawablePadding" format="dimension" />
     </declare-styleable>
+
+
+    <declare-styleable name="BannerIndicator">
+        <!--指示器之间的间隙-->
+        <attr name="gap" format="dimension" />
+        <!--指示器的宽度-->
+        <attr name="slider_width" format="dimension" />
+        <!--指示器的高度-->
+        <attr name="slider_height" format="dimension" />
+        <!--指示器大小变化方向-->
+        <attr name="sleider_align">
+            <enum name="Left" value="1" />
+            <enum name="Center" value="0" />
+            <enum name="Right" value="2" />
+        </attr>
+    </declare-styleable>
 </resources>

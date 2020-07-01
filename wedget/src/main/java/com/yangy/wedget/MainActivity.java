@@ -18,23 +18,15 @@ import utils.Logger;
 public class MainActivity extends MvpActivity {
     private String mTitles1[] = {
             "推荐活动", "正在进行", "我参与的"};
-
-
     private String mTitles2[] = {"基因贴", "议事", "活动", "聊天室"};
     private String mTitles3[] = {"简介", "基因贴"};
     private String mTitles4[] = {"我的创建", "我的收藏"};
-//    , "体育",
-//            "段子", "美食", "电影", "科技", "搞笑",
-//            "社会", "财经", "时尚", "汽车", "军事",
-//            "小说", "育儿", "职场", "萌宠", "游戏",
-//            "健康", "动漫", "互联网"};
-
     private List<Fragment> mFragments;
-    private TabFragmentAdapter mTabFragmentAdapter;
     private CustomTabLayout mTabLayout1;
     private CustomTabLayout mTabLayout2;
     private CustomTabLayout mTabLayout3;
     private CustomTabLayout mTabLayout4;
+    private BannerIndicator mIndicator;
     private ViewPager mViewPager;
 
     @Override
@@ -60,7 +52,7 @@ public class MainActivity extends MvpActivity {
         mTabLayout3 = findViewById(R.id.tablayout3);
         mTabLayout4 = findViewById(R.id.tablayout4);
         mViewPager = findViewById(R.id.viewPager);
-
+        mIndicator=findViewById(R.id.indicator);
 
         for (int i = 0; i < mTitles2.length; i++) {
             MyFragment fragment = new MyFragment();
@@ -78,6 +70,12 @@ public class MainActivity extends MvpActivity {
         init3();
         init4();
 
+        initPointIndicator();
+
+    }
+
+    private void initPointIndicator() {
+        mIndicator.setUpWidthViewPager(mViewPager);
     }
 
     private void init1() {
