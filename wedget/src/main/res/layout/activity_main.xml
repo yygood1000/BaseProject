@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.yangy.wedget.CustomTabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/tablayout1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:background="#1e1e1e"
+        app:tabBadgeTextSize="12"
+        app:tabIndicatorDrawable="@drawable/shape_indicator_white"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorMarginTop="5dp"
+        app:tabIndicatorWidth="15dp"
+        app:tabIsShowBadge="true"
+        app:tabSelectTextColor="#FFFFFF"
+        app:tabSelectedBold="true"
+        app:tabTextColor="#FFFFFF"
+        app:tabTextSizeDP="14"
+        app:tab_Mode="mode_fixed" />
+
+    <com.yangy.wedget.CustomTabLayout
+        android:id="@+id/tablayout2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_bg_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorDrawable="@drawable/shape_indicator_red"
         app:tabIndicatorHeight="4dp"
         app:tabIndicatorMarginTop="5dp"
         app:tabIndicatorWidth="15dp"
@@ -25,14 +45,55 @@
         app:tabUnReadDrawablePadding="5dp"
         app:tab_Mode="mode_scrollable" />
 
+    <com.yangy.wedget.CustomTabLayout
+        android:id="@+id/tablayout3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="#1e1e1e"
+        android:paddingStart="90dp"
+        android:paddingEnd="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorDrawable="@drawable/shape_indicator_red"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorMarginTop="5dp"
+        app:tabIndicatorWidth="15dp"
+        app:tabSelectTextColor="#FFFFFF"
+        app:tabSelectedBold="true"
+        app:tabTextBold="true"
+        app:tabTextColor="#FFFFFF"
+        app:tabTextSizeDP="20"
+        app:tab_Mode="mode_fixed" />
+
+    <com.yangy.wedget.CustomTabLayout
+        android:id="@+id/tablayout4"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="#1e1e1e"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorDrawable="@drawable/shape_indicator_white"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorMarginTop="5dp"
+        app:tabIndicatorWidth="15dp"
+        app:tabSelectTextColor="#FFFFFF"
+        app:tabTextBold="true"
+        app:tabTextColor="#FFFFFF"
+        app:tabTextSizeDP="14"
+        app:tab_Mode="mode_fixed" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tablayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tablayout2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -38,7 +38,7 @@
         android:layout_width="10dp"
         android:layout_height="2dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/shape_indecator_white"
+        android:background="@drawable/shape_indicator_white"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -19,13 +19,15 @@
         android:id="@+id/tab_item_badge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        tools:text="21111"
+        tools:textSize="8sp" />
 
     <View
         android:id="@+id/tab_item_indicator"
         android:layout_width="10dp"
         android:layout_height="2dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/shape_indecator_white"
+        android:background="@drawable/shape_indicator_white"
         android:visibility="invisible" />
 </LinearLayout>

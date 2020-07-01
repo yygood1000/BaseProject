@@ -32,14 +32,16 @@ public class CustomTabLayout extends FrameLayout {
     private TabLayout mTabLayout;
     private List<String> mTabTextList;
     private List<View> mCustomViewList;
+    private boolean mTabTextBold;
     private int mSelectTextColor;
     private int mUnSelectTextColor;
     private int mIndicatorHeight;
     private int mIndicatorWidth;
     private int mIndicatorMarginTop;
+    private Drawable mTabIndicatorDrawable;
     private int mTabMode;
     private int mTabTextSizeDP;
-    public boolean mIsSelectedBold;
+    private boolean mIsSelectedBold;
     private boolean mIsShowBadge;
     private int mBadgeTextSize;
 
@@ -69,6 +71,7 @@ public class CustomTabLayout extends FrameLayout {
 
     private void readAttr(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTabLayout);
+        mTabTextBold = typedArray.getBoolean(R.styleable.CustomTabLayout_tabTextBold, false);
         // Tab文字未选中颜色
         mUnSelectTextColor = typedArray.getColor(R.styleable.CustomTabLayout_tabTextColor, Color.parseColor("#000000"));
         // Tab文字选中颜色
@@ -79,6 +82,11 @@ public class CustomTabLayout extends FrameLayout {
         // 指示条宽度
         mIndicatorWidth = typedArray.getDimensionPixelSize(R.styleable.CustomTabLayout_tabIndicatorWidth, 0);
         mIndicatorMarginTop = typedArray.getDimensionPixelSize(R.styleable.CustomTabLayout_tabIndicatorMarginTop, 5);
+
+        mTabIndicatorDrawable = typedArray.getDrawable(R.styleable.CustomTabLayout_tabIndicatorDrawable);
+        if (mTabIndicatorDrawable == null) {
+            mTabIndicatorDrawable = AppCompatResources.getDrawable(context, R.drawable.shape_indicator_red);
+        }
         // Tab文本大小
         mTabTextSizeDP = typedArray.getInteger(R.styleable.CustomTabLayout_tabTextSizeDP, 0);
         // TabLayout的展示模式，滚动或固定平铺
@@ -119,17 +127,16 @@ public class CustomTabLayout extends FrameLayout {
                     if (i == tab.getPosition()) {
                         // 选中状态
                         text.setTextColor(mSelectTextColor);
-                        if (mIsSelectedBold) {
+                        if (mIsSelectedBold || mTabTextBold) {
                             text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                         }
-                        indicator.setBackground(AppCompatResources.getDrawable(context,
-                                R.drawable.shape_indecator_red));
+                        indicator.setBackground(mTabIndicatorDrawable);
                         indicator.setVisibility(View.VISIBLE);
                     } else {
                         // 未选中状态
                         text.setTextColor(mUnSelectTextColor);
                         indicator.setVisibility(View.INVISIBLE);
-                        if (mIsSelectedBold) {
+                        if (!mTabTextBold && mIsSelectedBold) {
                             text.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
                         }
                     }
@@ -151,11 +158,15 @@ public class CustomTabLayout extends FrameLayout {
         return mCustomViewList;
     }
 
-    public void setBadgeVisibility(int position, boolean isVisible) {
+    public void setBadgeText(int position, String content) {
         if (null != mCustomViewList && mCustomViewList.size() > 0) {
             View view = mCustomViewList.get(position);
-            View badge = view.findViewById(R.id.tab_item_badge);
-            badge.setVisibility(isVisible ? VISIBLE : GONE);
+            TextView badge = view.findViewById(R.id.tab_item_badge);
+            badge.setVisibility(mIsShowBadge ? VISIBLE : GONE);
+            badge.setText(content);
+            Logger.d("oye", "setBadgeText = " + content);
+        } else {
+            Logger.e("oye", "null == mCustomViewList || mCustomViewList.size() <= 0");
         }
     }
 
@@ -201,6 +212,7 @@ public class CustomTabLayout extends FrameLayout {
         TextView tabText = mTab.findViewById(R.id.tab_item_text);
         TextView tvBadge = mTab.findViewById(R.id.tab_item_badge);
         tvBadge.setVisibility(mIsShowBadge ? VISIBLE : GONE);
+        Logger.d("oye", "mBadgeTextSize = " + mBadgeTextSize);
         tvBadge.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mBadgeTextSize);
         if (mIndicatorWidth > 0) {
             View indicator = mTab.findViewById(R.id.tab_item_indicator);
@@ -209,6 +221,9 @@ public class CustomTabLayout extends FrameLayout {
             layoutParams.height = mIndicatorHeight;
             layoutParams.topMargin = mIndicatorMarginTop;
             indicator.setLayoutParams(layoutParams);
+        }
+        if (mTabTextBold) {
+            tabText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
         tabText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mTabTextSizeDP);
         tabText.setTextColor(mUnSelectTextColor);
@@ -257,14 +272,13 @@ public class CustomTabLayout extends FrameLayout {
                     if (i == tab.getPosition()) {
                         // 选中状态
                         text.setTextColor(mTabLayout.mSelectTextColor);
-                        indicator.setBackground(AppCompatResources.getDrawable(view.getContext(),
-                                R.drawable.shape_indecator_red));
-                        if (mTabLayout.mIsSelectedBold) {
+                        indicator.setBackground(mTabLayout.mTabIndicatorDrawable);
+                        if (mTabLayout.mTabTextBold || mTabLayout.mIsSelectedBold) {
                             text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                         }
                         indicator.setVisibility(View.VISIBLE);
                     } else {
-                        if (mTabLayout.mIsSelectedBold) {
+                        if (!mTabLayout.mTabTextBold && mTabLayout.mIsSelectedBold) {
                             text.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
                         }
                         // 未选中状态
